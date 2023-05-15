@@ -24,6 +24,11 @@ class SumtingwongRecord extends Model
         return new(SumtingwongRecordFactory::class);
     }
 
+    public function scopeOrderByHighSeverity(Builder $query): Builder
+    {
+        return $query->orderByRaw("FIELD(severity, 'high', 'medium', 'low')");
+    }
+
     public static function latest(): Builder
     {
         return static::query()->latest();

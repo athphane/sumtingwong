@@ -15,7 +15,7 @@ class SumtingwongsController extends Controller
 
     public function index()
     {
-        $sumtingwongs = SumtingwongRecord::latest()->get();
+        $sumtingwongs = SumtingwongRecord::orderByHighSeverity()->latest()->get();
 
 
         return view('sumtingwong::index', compact('sumtingwongs'));
