@@ -8,6 +8,11 @@ use Illuminate\Routing\Controller;
 
 class SumtingwongsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(Authenticate::class);
+    }
+
     public function index()
     {
         $sumtingwongs = SumtingwongRecord::latest()->get();
