@@ -1,8 +1,7 @@
 # Sumtingwong
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/athphane/sumtingwong.svg?style=flat-square)](https://packagist.org/packages/athphane/sumtingwong)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/athphane/sumtingwong/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/athphane/sumtingwong/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/athphane/sumtingwong/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/athphane/sumtingwong/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![run-tests](https://github.com/athphane/sumtingwong/actions/workflows/run-tests.yml/badge.svg)](https://github.com/athphane/sumtingwong/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/athphane/sumtingwong.svg?style=flat-square)](https://packagist.org/packages/athphane/sumtingwong)
 
 Add functionality to your application so users can report errors and bugs they find while using the application.

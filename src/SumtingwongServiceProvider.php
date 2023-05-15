@@ -2,9 +2,10 @@
 
 namespace Athphane\Sumtingwong;
 
+use Athphane\Sumtingwong\Models\SumtingwongRecord;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Athphane\Sumtingwong\Commands\SumtingwongCommand;
 
 class SumtingwongServiceProvider extends PackageServiceProvider
 {
@@ -20,6 +21,11 @@ class SumtingwongServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasMigration('create_sumtingwong_table')
-            ->hasCommand(SumtingwongCommand::class);
+            ->hasRoute('web')
+            ->hasInstallCommand(function (InstallCommand $command) {
+                $command
+                    ->publishMigrations()
+                    ->publishConfigFile();
+            });
     }
 }
