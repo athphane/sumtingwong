@@ -5,7 +5,7 @@
     <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div class="sm:flex sm:items-center sm:justify-between">
             <div class="text-center sm:text-left">
-                <a href="{{ route('sumtingwongs.index') }}" class="text-8xl font-bold text-gray-900 sm:text-3xl text-transparent bg-clip-text  bg-gradient-to-r from-indigo-400 to-slate-800">
+                <a href="{{ route('sumtingwongs.index') }}" class="text-2xl  font-bold text-gray-900 sm:text-3xl text-transparent bg-clip-text  bg-gradient-to-r from-indigo-400 to-slate-800">
                     {{ __("Sumtingwong on :app_name", ['app_name' => config('app.name')]) }}
                 </a>
 
@@ -21,7 +21,7 @@
                     type="button"
                 >
 
-                    <a href="{{ route(config('sumtingwong.home_route')) }}" class="text-sm font-medium"> View Website </a>
+                    <a href="{{ route(config('sumtingwong.home_route')) }}" class="text-sm font-medium">{{ __('View Website') }}</a>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-4 w-4"
@@ -39,10 +39,10 @@
                 </button>
                 @endif
                 <a
-                    class="block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring"
+                    class="block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white text-center transition hover:bg-indigo-700 focus:outline-none focus:ring"
                     href="{{ route('sumtingwongs.latest') }}"
                 >
-                    View Latest
+                    {{ __('View Latest') }}
                 </a>
             </div>
         </div>
