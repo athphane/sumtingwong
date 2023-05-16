@@ -21,7 +21,9 @@ class SumtingwongsController extends Controller
             fn (Builder $query) => $query->orderBySeverity()
         )->when(! $request->query->has('orderBy') || $request->query('orderBy') !== 'severity',
             fn (Builder $query) => $query->latest()
-        )->get();
+        );
+
+        $sumtingwongs = $sumtingwongs->paginate(20);
 
         return view('sumtingwong::index', compact('sumtingwongs'));
     }
