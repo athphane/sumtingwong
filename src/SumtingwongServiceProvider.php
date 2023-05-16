@@ -2,7 +2,6 @@
 
 namespace Athphane\Sumtingwong;
 
-use Athphane\Sumtingwong\Models\SumtingwongRecord;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;

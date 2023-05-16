@@ -2,9 +2,10 @@
 
 namespace Athphane\Sumtingwong\Tests;
 
+use Athphane\Sumtingwong\SumtingwongServiceProvider;
+use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Athphane\Sumtingwong\SumtingwongServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -21,6 +22,7 @@ class TestCase extends Orchestra
     {
         return [
             SumtingwongServiceProvider::class,
+            BladeHeroiconsServiceProvider::class,
         ];
     }
 
@@ -28,9 +30,17 @@ class TestCase extends Orchestra
     {
         config()->set('database.default', 'testing');
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_sumtingwong_table.php.stub';
+        $migration = include __DIR__.'/../database/migrations/create_sumtingwong_tables.php.stub';
         $migration->up();
-        */
+    }
+
+    /**
+     * Ignore package discovery from.
+     *
+     * @return array<int, string>
+     */
+    public function ignorePackageDiscoveriesFrom()
+    {
+        return ['blade-ui-kit/blade-heroicons'];
     }
 }

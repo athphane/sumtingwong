@@ -22,9 +22,6 @@ class Sumtingwong
 
     /**
      * Set the callback that should be used to authenticate Sumtingwong users.
-     *
-     * @param  Closure  $callback
-     * @return static
      */
     public static function auth(Closure $callback): static
     {

@@ -21,7 +21,7 @@ class SumtingwongRecord extends Model
 
     protected static function newFactory()
     {
-        return new(SumtingwongRecordFactory::class);
+        return new (SumtingwongRecordFactory::class);
     }
 
     public static function latest(): Builder
@@ -32,6 +32,11 @@ class SumtingwongRecord extends Model
     public static function latestEntry(): self
     {
         return static::query()->latest()->first();
+    }
+
+    public function scopeOrderBySeverity(Builder $query): Builder
+    {
+        return $query->orderBy('severity');
     }
 
     public function user(): BelongsTo
@@ -47,6 +52,4 @@ class SumtingwongRecord extends Model
 
         return null;
     }
-
-
 }

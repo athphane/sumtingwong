@@ -15,12 +15,13 @@
             </div>
 
             <div class="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
+                @if (Route::has(config(config('sumtingwong.home_route'))))
                 <button
                     class="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-200 px-5 py-3 text-gray-500 transition hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:ring"
                     type="button"
                 >
-                    <a href="{{ route(config('sumtingwong.home_route')) }}" class="text-sm font-medium"> View Website </a>
 
+                    <a href="{{ route(config('sumtingwong.home_route')) }}" class="text-sm font-medium"> View Website </a>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-4 w-4"
@@ -36,7 +37,7 @@
                         />
                     </svg>
                 </button>
-
+                @endif
                 <a
                     class="block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring"
                     href="{{ route('sumtingwongs.latest') }}"
