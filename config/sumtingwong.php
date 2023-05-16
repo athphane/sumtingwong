@@ -4,5 +4,5 @@
 return [
     'route_prefix' => 'sumtingwongs',
 
-    'home_route' => 'home'
+    'home_route' => 'home',
 ];

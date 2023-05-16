@@ -17,7 +17,6 @@ class SumtingwongsController extends Controller
     {
         $sumtingwongs = SumtingwongRecord::orderByHighSeverity()->latest()->get();
 
-
         return view('sumtingwong::index', compact('sumtingwongs'));
     }
 

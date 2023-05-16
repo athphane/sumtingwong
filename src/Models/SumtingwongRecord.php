@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\DB;
 
 class SumtingwongRecord extends Model
 {
@@ -21,12 +22,12 @@ class SumtingwongRecord extends Model
 
     protected static function newFactory()
     {
-        return new(SumtingwongRecordFactory::class);
+        return new (SumtingwongRecordFactory::class);
     }
 
     public function scopeOrderByHighSeverity(Builder $query): Builder
     {
-        return $query->orderByRaw("FIELD(severity, 'high', 'medium', 'low')");
+        return $query->orderBy(DB::raw("CASE severity WHEN 'high' THEN 1 WHEN 'medium' THEN 2 WHEN 'low' THEN 3 ELSE 4 END"));
     }
 
     public static function latest(): Builder
@@ -52,6 +53,4 @@ class SumtingwongRecord extends Model
 
         return null;
     }
-
-
 }
