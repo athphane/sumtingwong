@@ -2,6 +2,10 @@
 
 All notable changes to `sumtingwong` will be documented in this file.
 
+## 0.3 - 2023-05-16
+
+**Full Changelog**: https://github.com/athphane/sumtingwong/compare/0.2...0.3
+
 ## 0.2 - 2023-05-16
 
 **Full Changelog**: https://github.com/athphane/sumtingwong/compare/0.1...0.2
