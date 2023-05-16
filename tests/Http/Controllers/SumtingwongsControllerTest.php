@@ -14,7 +14,40 @@ test('can authenticate with sumtingwong if env is local', function () {
         ->assertOk();
 });
 
-test('can see created sumtingwong records if authenticated order by high severity first', function () {
+test('can see created  sumtingwong records if authenticated and ordered by latest created', function () {
+
+    SumtingwongRecord::factory()->state([
+        'severity' => 'low',
+    ])->count(3)->create();
+
+    SumtingwongRecord::factory()->state([
+        'severity' => 'high',
+        'created_at' => now()->subMinutes(5),
+    ])->count(3)->create();
+
+    SumtingwongRecord::factory()->state([
+        'severity' => 'medium',
+        'created_at' => now()->subMinutes(10),
+    ])->count(3)->create();
+
+    $response = $this->get(route('sumtingwongs.index'))
+        ->assertOk();
+
+    $response->assertSeeTextInOrder([
+        'low',
+        'low',
+        'low',
+        'high',
+        'high',
+        'high',
+        'medium',
+        'medium',
+        'medium',
+
+    ]);
+});
+
+test('can order sumtingwong records by severity', function () {
 
     SumtingwongRecord::factory()->state([
         'severity' => 'low',
@@ -28,7 +61,7 @@ test('can see created sumtingwong records if authenticated order by high severit
         'severity' => 'medium',
     ])->count(3)->create();
 
-    $response = $this->get(route('sumtingwongs.index'))
+    $response = $this->get(route('sumtingwongs.index', ['orderBy' => 'severity']))
         ->assertOk();
 
     assertDatabaseCount('sumtingwong_entries', 9);
@@ -40,16 +73,16 @@ test('can see created sumtingwong records if authenticated order by high severit
         $response->assertSee($record->created_at->format('d M Y H:i:s'));
     });
 
-    $response->assertSeeInOrder([
+    $response->assertSeeTextInOrder([
         'high',
         'high',
         'high',
-        'medium',
-        'medium',
-        'medium',
         'low',
         'low',
         'low',
+        'medium',
+        'medium',
+        'medium',
     ]);
 });
 

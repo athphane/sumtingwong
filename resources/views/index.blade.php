@@ -3,6 +3,7 @@
         @if($sumtingwongs->isEmpty())
             <x-sumtingwong::empty/>
         @else
+            <x-sumtingwong::filters/>
             <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm table-auto">
                 <thead class="text-left">
                 <tr>
