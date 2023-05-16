@@ -63,7 +63,7 @@
                             </span>
                         </td>
                         <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{ $sumtingwong->ip }}</td>
-                        <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{ $sumtingwong->route }}</td>
+                        <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{ \Illuminate\Support\Str::limit($sumtingwong->route, 80) }}</td>
                         <td class="whitespace-nowrap px-4 py-2">
                             <a
                                 href="{{ route('sumtingwongs.show', $sumtingwong) }}"
