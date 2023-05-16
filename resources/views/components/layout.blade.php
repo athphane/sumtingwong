@@ -25,5 +25,6 @@
     {{ $slot }}
 </div>
 
+<x-sumtingwong::footer />
 </body>
 </html>
