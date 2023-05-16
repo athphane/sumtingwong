@@ -76,6 +76,10 @@
                 @endforeach
                 </tbody>
             </table>
+
+            <div class="my-8">
+                {{ $sumtingwongs->links() }}
+            </div>
         @endif
     </div>
 </x-sumtingwong::layout>
