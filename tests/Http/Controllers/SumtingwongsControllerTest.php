@@ -1,6 +1,7 @@
 <?php
 
 use Athphane\Sumtingwong\Models\SumtingwongRecord;
+use Illuminate\Support\Str;
 use function Pest\Laravel\assertDatabaseCount;
 
 beforeEach(function () {
@@ -21,12 +22,12 @@ test('can see created  sumtingwong records if authenticated and ordered by lates
     ])->count(3)->create();
 
     SumtingwongRecord::factory()->state([
-        'severity' => 'high',
+        'severity'   => 'high',
         'created_at' => now()->subMinutes(5),
     ])->count(3)->create();
 
     SumtingwongRecord::factory()->state([
-        'severity' => 'medium',
+        'severity'   => 'medium',
         'created_at' => now()->subMinutes(10),
     ])->count(3)->create();
 
@@ -69,7 +70,7 @@ test('can order sumtingwong records by severity', function () {
     SumtingwongRecord::all()->each(function ($record) use ($response) {
         $response->assertSee($record->ip);
         $response->assertSee($record->severity);
-        $response->assertSee($record->route);
+        $response->assertSee(Str::limit($record->route, 80));
         $response->assertSee($record->created_at->format('d M Y H:i:s'));
     });
 

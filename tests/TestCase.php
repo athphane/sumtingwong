@@ -22,7 +22,6 @@ class TestCase extends Orchestra
     {
         return [
             SumtingwongServiceProvider::class,
-            BladeHeroiconsServiceProvider::class,
         ];
     }
 
@@ -41,6 +40,6 @@ class TestCase extends Orchestra
      */
     public function ignorePackageDiscoveriesFrom()
     {
-        return ['blade-ui-kit/blade-heroicons'];
+        return [];
     }
 }
