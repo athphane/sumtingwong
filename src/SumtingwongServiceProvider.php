@@ -19,7 +19,7 @@ class SumtingwongServiceProvider extends PackageServiceProvider
             ->name('sumtingwong')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_sumtingwong_table')
+            ->hasMigration('create_sumtingwong_tables')
             ->hasRoute('web')
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
