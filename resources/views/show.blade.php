@@ -1,4 +1,10 @@
 <x-sumtingwong::layout>
+    @if($message = session('success'))
+        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
+            <span class="font-medium">{{ $message }}</span>
+        </div>
+    @endif
+
     <div>
         <div class="px-4 sm:px-0">
             <h3
@@ -29,8 +35,12 @@
                     </dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                    <dt class="text-sm font-medium leading-6 text-gray-900">{{ __('Addressed At') }}</dt>
+                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $sumtingwong->addressed_at?->format('d M Y H:i:s') ?? 'Not Addressed' }}</dd>
+                </div>
+                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                     <dt class="text-sm font-medium leading-6 text-gray-900">{{ __('User') }}</dt>
-                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $sumtingwong->formatted_user }}</dd>
+                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $sumtingwong->formatted_user ?? '-' }}</dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                     <dt class="text-sm font-medium leading-6 text-gray-900">{{ __('IP') }}</dt>
@@ -49,8 +59,26 @@
                     <dt class="text-sm font-medium leading-6 text-gray-900">Actions</dt>
                     <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                         <div class="flex space-x-2">
-                            <button class="px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600">{{ __('Mark as Addressed') }}</button>
-                            <a href="{{ route('sumtingwongs.index') }}" class="px-4 py-2 bg-slate-500 text-white rounded-md hover:bg-slate-600">{{ __('Go Back') }}</a>
+                            <form method="POST" action="{{ route('sumtingwongs.update', $sumtingwong->id) }}">
+                                @csrf
+                                @method('PATCH')
+                                @if(! $sumtingwong->addressed_at)
+                                    <button
+                                        type="submit"
+                                        name="action"
+                                        value="mark_addressed"
+                                        class="px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600">{{ __('Mark as Addressed') }}</button>
+                                @endif
+                                @if($sumtingwong->addressed_at)
+                                    <button
+                                        type="submit"
+                                        name="action"
+                                        value="mark_not_addressed"
+                                        class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">{{ __('Mark Not Addressed') }}</button>
+                                @endif
+                            </form>
+                            <a href="{{ route('sumtingwongs.index') }}"
+                               class="px-4 py-2 bg-slate-500 text-white rounded-md hover:bg-slate-600">{{ __('Go Back') }}</a>
                         </div>
 
                     </dd>

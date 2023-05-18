@@ -14,6 +14,8 @@ Route::group([
         ->name('latest');
     Route::get('/{id}', [SumtingwongsController::class, 'show'])
         ->name('show');
+    Route::patch('/{id}', [SumtingwongsController::class, 'update'])
+        ->name('update');
 });
 
 Route::redirect('sumtingwong', 'sumtingwongs');

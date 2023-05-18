@@ -15,6 +15,10 @@ class SumtingwongRecord extends Model
 
     protected $table = 'sumtingwong_entries';
 
+    protected $fillable = [
+        'addressed_at'
+    ];
+
     protected $casts = [
         'addressed_at' => 'datetime',
     ];
