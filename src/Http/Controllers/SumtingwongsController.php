@@ -23,7 +23,8 @@ class SumtingwongsController extends Controller
             fn(Builder $query) => $query->latest()
         );
 
-        $sumtingwongs = $sumtingwongs->paginate(20);
+        $sumtingwongs = $sumtingwongs->paginate(20)
+            ->appends($request->except('page'));
 
         return view('sumtingwong::index', compact('sumtingwongs'));
     }
