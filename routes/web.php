@@ -3,9 +3,10 @@
 use Athphane\Sumtingwong\Http\Controllers\SumtingwongsController;
 use Illuminate\Support\Facades\Route;
 
+
 Route::group([
     'prefix' => config('sumtingwong.route_prefix'),
-    'as' => 'sumtingwongs.',
+    'as'     => 'sumtingwongs.',
 ], function () {
     Route::get('/', [SumtingwongsController::class, 'index'])
         ->name('index');
@@ -14,3 +15,5 @@ Route::group([
     Route::get('/{id}', [SumtingwongsController::class, 'show'])
         ->name('show');
 });
+
+Route::redirect('sumtingwong', 'sumtingwongs');

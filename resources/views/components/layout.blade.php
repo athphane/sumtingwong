@@ -19,12 +19,12 @@
 </head>
 
 <body>
-<x-sumtingwong::header />
+<x-sumtingwong::header/>
 
 <div class="mx-auto max-w-screen-xl px-4 py-2 sm:px-6 sm:py-4 lg:px-8">
     {{ $slot }}
 </div>
 
-<x-sumtingwong::footer />
+<x-sumtingwong::footer/>
 </body>
 </html>
